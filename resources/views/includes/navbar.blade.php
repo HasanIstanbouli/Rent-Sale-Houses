@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg  navbar-dark fixed-top">
+<nav class="navbar navbar-expand-md  navbar-dark fixed-top">
     <a class="navbar-brand" href="#"><img src="images/logo1_7JU_icon.ico"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -30,13 +30,20 @@
                 <a class="nav-link scroll11" href="index2.html">Our Buildings</a>
             </li>
         </ul>
+        @if (!Auth::guest())
+            <div style="width: 70px;height: 70px;">
+        <img src="/storage/upload/{{Auth::user()->user_image}}" class="rounded-circle"  width="70" height="70">
+            </div>
+        @endif
         <ul class="ml-auto  mt-2">
 
             @if (Auth::guest())
+
                 <button class="btn btn-outline-light my-2 my-sm-0"
                    data-toggle="modal" data-target="#exampleModal">Login</button>
                 <a href="{{ route('register') }}" class="btn btn-outline-light my-2 my-sm-0">Register</a>
             @else
+
                 <li class="dropdown" style="list-style: none">
                     <a href="#" class="dropdown-toggle btn btn-outline-light" data-toggle="dropdown" role="button" aria-expanded="false">
                         {{ Auth::user()->name }} <span class="caret"></span>

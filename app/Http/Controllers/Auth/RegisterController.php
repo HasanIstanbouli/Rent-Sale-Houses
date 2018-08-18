@@ -6,9 +6,11 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use phpDocumentor\Reflection\Types\Null_;
 
 class RegisterController extends Controller
 {
+
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -51,9 +53,10 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'user_image' => 'image|nullable|max:1024',
+
         ]);
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -62,10 +65,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if (!isset($data['user_image']))
+         $imageName='noImage.jpg' ;
+        else {
+            $imageName = time() . '.' . $data['user_image']->getClientOriginalExtension();
+
+            $data['user_image']->move(base_path() . '/public/storage/upload/', $imageName);
+        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'user_image'=> $imageName,
         ]);
     }
 }

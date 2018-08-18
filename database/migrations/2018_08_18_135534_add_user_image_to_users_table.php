@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHousesTable extends Migration
+class AddUserImageToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateHousesTable extends Migration
      */
     public function up()
     {
-//        Schema::create('houses', function (Blueprint $table) {
-//            $table->increments('id');
-//            $table->increments('id');
-//            $table->timestamps();
-//        });
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('user_image') ;
+        });
     }
 
     /**
@@ -27,6 +25,9 @@ class CreateHousesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('houses');
+        Schema::table('users', function (Blueprint $table) {
+            //
+            $table->dropColumn('user_image') ;
+        });
     }
 }
