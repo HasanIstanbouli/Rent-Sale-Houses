@@ -1,0 +1,75 @@
+
+nav{
+    background-color: firebrick;
+}
+/* Make the image fully responsive */
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+#OurTeam img{
+    width: 300px;
+    height: 300px;
+}
+#OurTeam{
+    background-image: url("../images/Office_View.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+#OurTeam p{
+    color: #bd2130;
+    font-weight: bold;
+}
+hr{
+    width: 80%;
+    background-color: #062c33;
+}
+*{
+    font-family: Verdana ;
+}
+
+.marginbottom{
+    margin-bottom: 6%;
+}
+.textcolor1 ,.textcolor1 p,.textcolor1 h3{
+    color: black;
+    font-family: "Blackadder ITC";
+    font-size: xx-large;
+    font-weight: bold;
+}
+#BuyOrRent{
+    background-image: url("../images/buyORrent1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+#OurServices{
+    background-image: url("../images/wall.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.card{
+    background: transparent;
+}
+#OurServices h1{
+    font-family: "Berlin Sans FB Demi";
+    font-weight: bold;
+    color: white;
+}
+.dropdown-menu1{
+    background: transparent;
+}
+#footer{
+    padding-top: 80px;
+    padding-bottom: 20px;
+    background-color: #34495e;
+    color: #ecf0f1;
+}
+.mylist{
+    list-style-type: none;
+}
+.fixUl{
+    padding-left:0;
+}
