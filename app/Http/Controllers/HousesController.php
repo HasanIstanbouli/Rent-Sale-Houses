@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\House;
 use Illuminate\Http\Request;
 
 class HousesController extends Controller
@@ -14,7 +15,9 @@ class HousesController extends Controller
     public function index()
     {
         //
-        return view('houses');
+        $house=House::all();
+        $ar=Array('house'=>$house);
+        return view('houses',$ar);
     }
 
     /**
