@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md  navbar-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <a class="navbar-brand" href="{{url('/')}}"><img src="images/logo1_7JU_icon.ico"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -63,7 +63,7 @@
                             </form>
                         </li>
                         <li>
-                            <a class="dropdown-item">Add House</a>
+                            <a class="dropdown-item" href="{{route('add_house')}}">Add House</a>
                         </li>
                     </ul>
                 </li>

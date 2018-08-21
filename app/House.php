@@ -8,8 +8,8 @@ class House extends Model
 {
     //
 
-    public function house_images(){
-        return $this->hasMany('App\HouseImages');
-}
+    public function users() {
+        return $this->belongsTo('App\User');
+    }
 
 }

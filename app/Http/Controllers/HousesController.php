@@ -12,6 +12,11 @@ class HousesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('logout');
+    }
+
     public function index()
     {
         //
@@ -84,5 +89,10 @@ class HousesController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function showAddHouse()
+    {
+
+        return view('add_house');
     }
 }

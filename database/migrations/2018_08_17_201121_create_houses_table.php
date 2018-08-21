@@ -17,8 +17,11 @@ class CreateHousesTable extends Migration
             $table->increments('id');
             $table->string('location');
             $table->string('status');
+            $table->mediumText('about');
             $table->double('area');
-            $table->integer('floor');
+            $table->string('floor',2);
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->refernces('id')->on('users') ;
             $table->timestamps();
         });
     }
