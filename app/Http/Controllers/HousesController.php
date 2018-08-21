@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\House;
+use App\HouseImages;
 use Illuminate\Http\Request;
-
 class HousesController extends Controller
 {
     /**
@@ -14,7 +14,7 @@ class HousesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('logout');
+        $this->middleware('auth')->except('show');
     }
 
     public function index()
@@ -41,9 +41,51 @@ class HousesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
+        $house_images_names=array();
         //
+        $this->validate($request, [
+
+            'location' => 'required',
+            'space' => 'required',
+            'status' => 'required',
+            'floor' => 'required',
+            'details' => 'required',
+            'images.*' => 'image|mimes:jpeg,png,jpg|max:2048'
+
+        ]);
+
+        if($request->hasfile('images'))
+        {
+
+            foreach($request->file('images') as $image)
+            {
+                $name=$image->getClientOriginalName();
+                $image->move(base_path() . '/public/storage/upload/houses_images', $name);
+                $house_images_names[]= $name;
+            }
+
+        }
+        $house = new House ;
+        $house->location = $request->input('location') ;
+        $house->area = $request->input('space') ;
+        $house->floor = $request->input('floor') ;
+        $house->status = $request->input('status') ;
+        $house->about = $request->input('details') ;
+        $house->user_id = auth()->user()->id ;
+        $house->save();
+        $id = $house->id;
+        foreach ($house_images_names as $names) {
+            $house_images = new HouseImages ;
+            $house_images->house_id = $house->id;
+            $house_images->house_image = $names;
+            $house_images->save();
+        }
+
+//        return redirect('/')->with('success', 'Done successfully');
+        return ($id);
     }
 
     /**

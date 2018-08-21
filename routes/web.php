@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/houses','HousesController@index')->name('houses');
 Route::get('/add_house','HousesController@showAddHouse')->name('add_house');
+Route::Post('form','HousesController@store');
