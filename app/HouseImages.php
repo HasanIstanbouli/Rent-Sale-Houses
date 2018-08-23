@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class HouseImages extends Model
 {
     //
+//    protected $table="house_images";
 
-    public function houses() {
+
+    public function house() {
         return $this->belongsTo('App\House');
     }
 }

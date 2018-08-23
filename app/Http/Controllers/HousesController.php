@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\House;
 use App\HouseImages;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 class HousesController extends Controller
 {
     /**
@@ -12,17 +14,26 @@ class HousesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth')->except('show');
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('auth')->except('show');
+//    }
 
     public function index()
     {
         //
+
         $house=House::all();
-        $ar=Array('house'=>$house);
-        return view('houses',$ar);
+//        $ht = new HouseImages() ;
+//        $i=$house->id ;
+//        $himg = DB::table('house_images')->where('house_id', $i)->get();
+//        $himg = HouseImages::all()->where('house_id',$i);
+//    $t2 = $hmg->houses ;
+//    $t3 = $u->houses ;
+//        $n =$house->$himg->house_image ;
+//        return view('houses')->with('house',$himg);
+        return view('houses')->with('houses',$house);
+//        return $house;
     }
 
     /**
@@ -63,7 +74,7 @@ class HousesController extends Controller
             foreach($request->file('images') as $image)
             {
                 $name=$image->getClientOriginalName();
-                $image->move(base_path() . '/public/storage/upload/houses_images', $name);
+                $image->move(base_path() . '/public/storage/houses_images', $name);
                 $house_images_names[]= $name;
             }
 
