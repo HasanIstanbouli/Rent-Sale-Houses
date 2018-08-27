@@ -65,6 +65,9 @@
                         <li>
                             <a class="dropdown-item" href="{{route('add_house')}}">Add House</a>
                         </li>
+                        <li>
+                            <a class="dropdown-item" href="{{route('my_houses')}}">My Houses</a>
+                        </li>
                     </ul>
                 </li>
             @endif

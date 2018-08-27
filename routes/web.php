@@ -16,9 +16,9 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::resource('houses','HousesController');
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/houses','HousesController@index')->name('houses');
+Route::get('/my_houses','HomeController@show')->name('my_houses');
 Route::get('/add_house','HousesController@showAddHouse')->name('add_house');
 Route::Post('form','HousesController@store');

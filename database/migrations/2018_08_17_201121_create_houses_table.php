@@ -21,7 +21,7 @@ class CreateHousesTable extends Migration
             $table->double('area');
             $table->string('floor',2);
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users') ;
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

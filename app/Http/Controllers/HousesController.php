@@ -95,8 +95,8 @@ class HousesController extends Controller
             $house_images->save();
         }
 
-//        return redirect('/')->with('success', 'Done successfully');
-        return ($id);
+        return redirect('/houses');
+//        return ($id);
     }
 
     /**
@@ -105,9 +105,10 @@ class HousesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //
+        return '4' ;
     }
 
     /**
@@ -142,7 +143,15 @@ class HousesController extends Controller
     public function destroy($id)
     {
         //
+//        $house = House::where('user_id',$id)->get ;
+        $house =House::find($id);
+//        $house_image=HouseImages::where('house_id',$id) ;
+//        $house_image->delete() ;
+        $house->delete();
+
+        return redirect("/my_houses");
     }
+
     public function showAddHouse()
     {
 

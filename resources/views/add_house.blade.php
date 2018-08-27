@@ -15,7 +15,10 @@
         </div>
         <div class="form-group">
             <label for="exampleInputLocation">House Status</label>
-            <input type="text" name="status" class="form-control" id="exampleInputLocation"  placeholder="Enter Status for New House">
+            <select class="form-control" name="status">
+                <option>Rent</option>
+                <option>Sale</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="exampleInputSpace">House Space</label>

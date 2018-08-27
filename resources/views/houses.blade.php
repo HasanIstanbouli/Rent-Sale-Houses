@@ -5,6 +5,7 @@
     <h1>Our Houses</h1>
 </div>
 <div class="container-fluid row">
+    <div class="c"></div>
 @foreach($houses as $house)
 {{--@foreach($house->house_images->unique('house_id') as $hh)--}}
 {{--<h1>{{$hh->house->image}}</h1>--}}
@@ -19,7 +20,7 @@
     <img class="card-img-top" src="{{ URL::to('/') }}/storage/houses_images/{{$hh->house_image}}" alt="Card image cap" style="height: 300px;width: auto">
     <div class="card-body">
         <h5 class="card-title">{{$house->location}} <span class="badge badge-pill badge-dark pull-right">{{$house->status}}</span></h5>
-        <p class="card-text" style="text-overflow: ellipsis; width: 300px;white-space: nowrap; overflow: hidden;">{{$house->about}}</p>
+        <p class="card-text" style="text-overflow: ellipsis; width: 300px ; white-space: nowrap; overflow: hidden;">{{$house->about}}</p>
         <a href="#" class="btn btn-primary pull-right">More</a>
     </div>
 </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User ;
+use App\House;
 
 class HomeController extends Controller
 {
@@ -25,4 +27,12 @@ class HomeController extends Controller
     {
         return view('welcome');
     }
+
+    public function show(){
+        $user_id =auth()->user()->id ;
+        $user = User::find($user_id);
+
+        return view('my_houses')->with('houses',$user->houses) ;
+}
+
 }
