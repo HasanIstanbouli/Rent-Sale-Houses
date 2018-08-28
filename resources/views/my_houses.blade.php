@@ -22,12 +22,13 @@
                             <h5 class="card-title">{{$house->location}} <span class="badge badge-pill badge-dark pull-right">{{$house->status}}</span></h5>
                             <p class="card-text" style="text-overflow: ellipsis; width: 300px ; white-space: nowrap; overflow: hidden;">{{$house->about}}</p>
                         </div>
-                        <div class="card-footer text-muted">
-                            <a href="#" class="btn btn-primary pull-right">More</a>
-                            {!! Form::open(['action' => ['HousesController@destroy',$house->id], 'method'=>'POST']) !!}
-                            {{Form::hidden('_method' ,'DELETE') }}
-                            {{Form::submit('Delete',['class'=>"pull-right btn btn-danger "]) }}
-                            {!! Form::close() !!}
+                        <div class="card-footer text-muted ">
+                            <a href="#" class="btn btn-primary pull-right m0">More</a>
+                            <a href="#" class="btn btn-success pull-left m0">Edit</a>
+                            <button type="button" class="pull-left btn btn-danger m0" data-toggle="modal" data-target="#exampleModal2">
+                                Delete
+                            </button>
+                            @include('layouts.confirm_dialog')
                         </div>
                     </div>
                 </div>

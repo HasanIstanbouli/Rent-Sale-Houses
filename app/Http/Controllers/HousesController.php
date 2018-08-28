@@ -140,7 +140,7 @@ class HousesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
         //
 //        $house = House::where('user_id',$id)->get ;
@@ -148,8 +148,8 @@ class HousesController extends Controller
 //        $house_image=HouseImages::where('house_id',$id) ;
 //        $house_image->delete() ;
         $house->delete();
+        return redirect()->back() ;
 
-        return redirect("/my_houses");
     }
 
     public function showAddHouse()
