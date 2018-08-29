@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('houses')
-    <div class="container text-center" style="margin-top:100px; ">
+    <div class="container text-center ">
         <h1>My Houses</h1>
     </div>
     <div class="container-fluid row">
@@ -23,12 +23,14 @@
                             <p class="card-text" style="text-overflow: ellipsis; width: 300px ; white-space: nowrap; overflow: hidden;">{{$house->about}}</p>
                         </div>
                         <div class="card-footer text-muted ">
-                            <a href="#" class="btn btn-primary pull-right m0">More</a>
+                            <a href="#" class="btn btn-primary pull-right m0" style="float: right;">More</a>
                             <a href="#" class="btn btn-success pull-left m0">Edit</a>
-                            <button type="button" class="pull-left btn btn-danger m0" data-toggle="modal" data-target="#exampleModal2">
-                                Delete
-                            </button>
-                            @include('layouts.confirm_dialog')
+                            <div style="display: inline-block">
+                                {!! Form::open(['action' => ['HousesController@destroy',$house->id], 'method'=>'POST']) !!}
+                                {{Form::hidden('_method' ,'DELETE') }}
+                                {{Form::submit('Delete',['class'=>"pull-left btn btn-danger m0 "]) }}
+                                {!! Form::close() !!}
+                            </div>
                         </div>
                     </div>
                 </div>
