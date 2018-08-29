@@ -68,6 +68,17 @@ class HousesController extends Controller
 
         ]);
 
+
+        $house = new House ;
+        $house->location = $request->input('location') ;
+        $house->area = $request->input('space') ;
+        $house->floor = $request->input('floor') ;
+        $house->status = $request->input('status') ;
+        $house->about = $request->input('details') ;
+        $house->user_id = auth()->user()->id ;
+        $house->save();
+//        $id = $house->id;
+
         if($request->hasfile('images'))
         {
 
@@ -79,15 +90,10 @@ class HousesController extends Controller
             }
 
         }
-        $house = new House ;
-        $house->location = $request->input('location') ;
-        $house->area = $request->input('space') ;
-        $house->floor = $request->input('floor') ;
-        $house->status = $request->input('status') ;
-        $house->about = $request->input('details') ;
-        $house->user_id = auth()->user()->id ;
-        $house->save();
-        $id = $house->id;
+        else {
+            $no_image = "no-image.png" ;
+            $house_images_names[]=$no_image ;
+        }
         foreach ($house_images_names as $names) {
             $house_images = new HouseImages ;
             $house_images->house_id = $house->id;
@@ -97,6 +103,7 @@ class HousesController extends Controller
 
         return redirect('/houses');
 //        return ($id);
+//        return response()->json(['success'=>'You have successfully upload file.']);
     }
 
     /**

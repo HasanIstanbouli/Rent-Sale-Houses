@@ -3,10 +3,9 @@
     <link href="{{ asset('css/add_house.css') }}" rel="stylesheet">
 @endpush
 @section('houses')
-<h1 class="text-center " style="margin-top: 100px">Admin Site</h1>
 
 <div class="container-fluid">
-    <h3>Add House</h3>
+    <h1 class="text-center">Add House</h1>
     <form method="post" action="{{url('form')}}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="form-group">
@@ -35,6 +34,7 @@
         <div class="form-group">
             <label for="exampleInputPhotos">House Photos</label>
             <input type="file" name="images[]" class="form-control" id="exampleInputPhotos" multiple>
+            {{--<input name="images" id="poster" type="file" class="form-control">--}}
         </div>
         {{--<div class="form-group">--}}
             {{--<label for="exampleInputColors">House Colors</label>--}}
@@ -44,6 +44,7 @@
             {{--<label for="exampleInputDate">House Date</label>--}}
             {{--<input type="date"  class="form-control" id="exampleInputDate" >--}}
         {{--</div>--}}
+
         <button type="submit" class="btn btn-outline-light">Submit</button>
     </form>
     </div>

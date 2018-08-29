@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
+<nav class="navbar navbar-expand-lg navbar-dark ">
     <a class="navbar-brand" href="{{url('/')}}"><img src="images/logo1_7JU_icon.ico"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -74,7 +75,6 @@
         </ul>
     </div>
 </nav>
-
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
