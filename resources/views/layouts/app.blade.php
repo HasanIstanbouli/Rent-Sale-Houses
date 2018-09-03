@@ -19,12 +19,13 @@
     <title>Laravel</title>
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    {{--<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">--}}
 
 </head>
 <body>
-@include('layouts.navbar')
 
+@include('layouts.navbar')
+@include('layouts.messages')
 @yield('welcome')
 @yield('houses')
 @yield('content')

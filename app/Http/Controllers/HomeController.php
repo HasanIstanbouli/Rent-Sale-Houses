@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User ;
 use App\House;
 
+
 class HomeController extends Controller
 {
     /**
@@ -31,8 +32,8 @@ class HomeController extends Controller
     public function show(){
         $user_id =auth()->user()->id ;
         $user = User::find($user_id);
-
-        return view('my_houses')->with('houses',$user->houses) ;
+        $uu = $user->houses()->paginate(6);
+        return view('my_houses')->with('houses',$uu) ;
 }
 
 }

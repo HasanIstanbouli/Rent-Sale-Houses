@@ -6,6 +6,7 @@
     </div>
     <div class="container-fluid row">
         <div class="c"></div>
+
         @foreach($houses as $house)
             {{--@foreach($house->house_images->unique('house_id') as $hh)--}}
             {{--<h1>{{$hh->house->image}}</h1>--}}
@@ -38,4 +39,5 @@
             @endforeach
         @endforeach
     </div>
+    <div style="margin:1% 40% 0 40%" >{{ $houses->links('vendor.pagination.bootstrap-4') }}</div>
 @endsection

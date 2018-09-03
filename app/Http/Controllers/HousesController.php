@@ -14,16 +14,16 @@ class HousesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-//    public function __construct()
-//    {
-//        $this->middleware('auth')->except('show');
-//    }
+    public function __construct()
+    {
+        $this->middleware('auth',['except'=>['index','show']]);
+    }
 
     public function index()
     {
         //
 
-        $house=House::all();
+        $house=House::orderBy('updated_at')->Paginate(6) ;
 //        $ht = new HouseImages() ;
 //        $i=$house->id ;
 //        $himg = DB::table('house_images')->where('house_id', $i)->get();
@@ -155,7 +155,7 @@ class HousesController extends Controller
 //        $house_image=HouseImages::where('house_id',$id) ;
 //        $house_image->delete() ;
         $house->delete();
-        return redirect()->back() ;
+        return redirect()->back()->with('success', 'Done successfully');
 //    return $id ;
     }
 

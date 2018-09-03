@@ -2,7 +2,7 @@
 
 @section('houses')
 <div class="container text-center">
-    <h1>Our Houses</h1>
+    <h1 style="font-family: 'Century Schoolbook'; color: firebrick;">Our Houses</h1>
 </div>
 <div class="container-fluid row">
 
@@ -34,12 +34,12 @@
                     {{--Delete--}}
                 {{--</button>--}}
             {{--@include('layouts.confirm_dialog')--}}
-                
+
                 {!! Form::open(['action' => ['HousesController@destroy',$house->id], 'method'=>'POST']) !!}
                 {{Form::hidden('_method' ,'DELETE') }}
                 {{Form::submit('Delete',['class'=>"pull-left btn btn-danger m0 "]) }}
                 {!! Form::close() !!}
-                
+
             @endif
     </div>
 </div>
@@ -47,5 +47,8 @@
 
 
 @endforeach
+        {{--{{$houses->links()}}--}}
+
 </div>
+<div style="margin:1% 40% 0 40%" >{{ $houses->links('vendor.pagination.bootstrap-4') }}</div>
 @endsection
