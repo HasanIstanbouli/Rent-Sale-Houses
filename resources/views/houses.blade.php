@@ -5,6 +5,8 @@
     <h1 style="font-family: 'Century Schoolbook'; color: firebrick;">Our Houses</h1>
 </div>
 <div class="container-fluid row">
+@include('layouts.filter')
+<div class="container-fluid row col-10">
 
 @foreach($houses as $house)
 {{--@foreach($house->house_images->unique('house_id') as $hh)--}}
@@ -50,5 +52,8 @@
         {{--{{$houses->links()}}--}}
 
 </div>
-<div style="margin:1% 40% 0 40%" >{{ $houses->links('vendor.pagination.bootstrap-4') }}</div>
+</div>
+<div style="margin:2% 45% 0 45%" >{{ $houses->links('vendor.pagination.bootstrap-4') }}</div>
+    {{--we use php artisan vendor:publish --tag=laravel-pagination
+command to make pagination works with Bootstrap 4--}}
 @endsection

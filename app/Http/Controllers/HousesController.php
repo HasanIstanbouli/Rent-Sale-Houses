@@ -23,7 +23,7 @@ class HousesController extends Controller
     {
         //
 
-        $house=House::orderBy('updated_at')->Paginate(6) ;
+        $house=House::orderBy('updated_at','desc')->Paginate(6) ;
 //        $ht = new HouseImages() ;
 //        $i=$house->id ;
 //        $himg = DB::table('house_images')->where('house_id', $i)->get();
@@ -64,7 +64,7 @@ class HousesController extends Controller
             'status' => 'required',
             'floor' => 'required',
             'details' => 'required',
-            'images.*' => 'image|mimes:jpeg,png,jpg|max:2048'
+            'images.*' => 'image|mimes:jpeg,png,jpg|max:90048'
 
         ]);
 
@@ -164,4 +164,19 @@ class HousesController extends Controller
 
         return view('add_house');
     }
+    public function filterHousese(Request $request){
+        if($request->input('order')=="newest 2 oldest")
+        $order = "desc";
+        else
+            $order = "asc" ;
+        $city = $request->input('city');
+        $status = $request->input('status');
+//        if ($status=="Any")
+
+            $h = House::orderBy('updated_at',$order)->Paginate(6) ;;
+
+        return view('houses')->with('houses',$h);
+//        return $city ;
+    }
+
 }

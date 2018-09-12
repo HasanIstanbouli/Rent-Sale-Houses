@@ -21,4 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/houses','HousesController@index')->name('houses');
 Route::get('/my_houses','HomeController@show')->name('my_houses');
 Route::get('/add_house','HousesController@showAddHouse')->name('add_house');
-Route::Post('form','HousesController@store');
+Route::Post('/houses','HousesController@filterHousese')->name('houses');
+Route::Post('form','HousesController@store')->name('form');

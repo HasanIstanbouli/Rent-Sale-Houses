@@ -32,7 +32,8 @@ class HomeController extends Controller
     public function show(){
         $user_id =auth()->user()->id ;
         $user = User::find($user_id);
-        $uu = $user->houses()->paginate(6);
+//        $user = User::find($user_id)->paginate(6); this doesn't work
+        $uu = $user->houses()->paginate(6); //this way works in case we like to use Eloquent and Model relations
         return view('my_houses')->with('houses',$uu) ;
 }
 
