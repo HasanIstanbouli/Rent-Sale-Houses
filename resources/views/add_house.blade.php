@@ -11,7 +11,12 @@
         {{ csrf_field() }}
         <div class="form-group">
             <label for="exampleInputLocation">House Locaion</label>
-            <input type="text" name="location" class="form-control" id="exampleInputLocation"  placeholder="Enter Location for New House">
+            <select class="form-control" name="location"  id="exampleInputLocation">
+                <option>Tartous</option>
+                <option>Lattakia</option>
+                <option>Damascuss</option>
+                <option>Aleppo</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="exampleInputLocation">House Status</label>
@@ -81,7 +86,7 @@
             success : function () {
                 $('#bar').width('100%');
                 $('#percent').html('100%');
-                window.location="{{URL::to('houses')}}";
+                {{--window.location="{{URL::to('houses')}}";--}}
             },
             complete : function () {
                 $('#progress_div').fadeOut();
@@ -98,7 +103,7 @@
 
 
              },
-            resetForm: true
+            resetForm: false
         });
     }
         // var xhr = ajaxCall.data('jqxhr');

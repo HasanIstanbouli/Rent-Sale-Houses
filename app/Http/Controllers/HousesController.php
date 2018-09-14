@@ -147,16 +147,18 @@ class HousesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+//    public function destroy($id)
+    public function destroy(Request $r)
     {
         //
 //        $house = House::where('user_id',$id)->get ;
-        $house =House::find($id);
+        $house =House::find($r->input('id'));
 //        $house_image=HouseImages::where('house_id',$id) ;
 //        $house_image->delete() ;
         $house->delete();
-        return redirect()->back()->with('success', 'Done successfully');
-//    return $id ;
+
+//        return redirect()->back()->with('success', 'Done successfully');
+//    return response(['id'=>])
     }
 
     public function showAddHouse()

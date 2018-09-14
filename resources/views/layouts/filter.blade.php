@@ -1,12 +1,5 @@
-<style>
-    #filter {
-        border: solid #843534 2px;
-        display: block;
 
-
-    }
-</style>
-<div class="container col-2" id="filter">
+<div class="container col-2" id="filter" style="border: solid #843534 2px;display: block;">
     <form method="post" action="{{url('houses')}}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="form-group">

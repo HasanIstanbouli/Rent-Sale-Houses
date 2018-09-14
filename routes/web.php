@@ -23,3 +23,5 @@ Route::get('/my_houses','HomeController@show')->name('my_houses');
 Route::get('/add_house','HousesController@showAddHouse')->name('add_house');
 Route::Post('/houses','HousesController@filterHousese')->name('houses');
 Route::Post('form','HousesController@store')->name('form');
+//Route::delete('/deletehouse','HousesController@destroy')->name('deletehouse');
+Route::get('delete/house','HousesController@destroy')->name('delete.house');
