@@ -36,7 +36,8 @@
         {{--<img src="/storage/upload/{{Auth::user()->user_image}}" class="rounded-circle"  width="70" height="70">--}}
             {{--</div>--}}
         @endif
-        <ul class="ml-auto  mt-2">
+        <ul class="ml-auto  mt-2 navbar-nav">
+            {{--the "ml-auto navbar-nav" classes are necessary for responsive style--}}
 
             @if (Auth::guest())
 
@@ -44,6 +45,27 @@
                    data-toggle="modal" data-target="#exampleModal">Login</button>
                 <a href="{{ route('register') }}" class="btn btn-outline-light my-2 my-sm-0">Register</a>
             @else
+
+                <li class="nav-item dropdown " style="list-style: none; margin-top: 10px">
+                <a id="navbardropdown" class="nav-link dropdown-toggle " href="#" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-globe"></i> Notifications <span class="badge badge-info" id="count-notification">
+                   {{auth()->user()->unreadNotifications->count()}} </span><span class="caret"></span>
+                </a>
+                    <div class="dropdown-menu" aria-labelledby="navbardropdown">
+                        @if (auth()->user()->unreadNotifications->count())
+                            @foreach(auth()->user()->unreadNotifications as $notification)
+                        <a class="dropdown-item" href="#">
+                           House in {{$notification->data['house']['location']}} is added by {{\App\User::find($notification->data['house']['user_id'])->name}} {{--nice way to get the username in notifications section remmember it brooo --}}
+                        </a>
+                            @endforeach
+                        @else
+                        <a class="dropdown-item" href="#">
+                            No Notifications
+                        </a>
+                            @endif
+                    </div>
+                </li>
 
                 <li class="dropdown" style="list-style: none">
                     <img src="/storage/upload/{{Auth::user()->user_image}}" class="rounded-circle"  width="70" height="70">

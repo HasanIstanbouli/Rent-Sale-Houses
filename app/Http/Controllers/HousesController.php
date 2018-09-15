@@ -6,7 +6,9 @@ use App\House;
 use App\HouseImages;
 use App\User;
 use Illuminate\Http\Request;
+use Notification;
 use Illuminate\Support\Facades\DB;
+use App\Notifications\New_House_Notification ;
 class HousesController extends Controller
 {
     /**
@@ -100,8 +102,12 @@ class HousesController extends Controller
             $house_images->house_image = $names;
             $house_images->save();
         }
+        $other_users = User::where('id','!=',auth()->user()->id)->get();
+       Notification::send($other_users,new New_House_Notification(House::latest('id')->first()));
+           return redirect('/houses');
 
-        return redirect('/houses');
+
+
 //        return ($id);
 //        return response()->json(['success'=>'You have successfully upload file.']);
     }
