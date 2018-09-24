@@ -118,10 +118,13 @@ class HousesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        //
-        return '4' ;
+
+       $house = House::find($id) ;
+
+       return view('more')->with('house',$house);
+//       return HouseImages::where('house_id','=',$id)->get();
     }
 
     /**
@@ -181,7 +184,7 @@ class HousesController extends Controller
         $status = $request->input('status');
 //        if ($status=="Any")
 
-            $h = House::orderBy('updated_at',$order)->Paginate(6) ;;
+            $h = House::orderBy('updated_at',$order)->Paginate(6) ;
 
         return view('houses')->with('houses',$h);
 //        return $city ;

@@ -16,7 +16,6 @@
 {{--@endforeach--}}
 
     @foreach($house->house_images->unique('house_id') as $hh)
-
 <div class="card col-4 col-xs-3"  id="thiscard" style="min-width: 300px">
     <img class="card-img-top" src="{{ URL::to('/') }}/storage/houses_images/{{$hh->house_image}}" alt="Card image cap" style="height: 300px;width: auto">
     @endforeach
@@ -25,7 +24,7 @@
         <p class="card-text" style="text-overflow: ellipsis; width: 300px ; white-space: nowrap; overflow: hidden;">{{$house->about}}</p>
     </div>
     <div class="card-footer text-muted  ">
-        <a href="#" class="btn btn-primary pull-right m0 ">More</a>
+        <a href="/houses/{{$house->id}}" class="btn btn-primary pull-right m0 ">More</a>
         @if(!Auth::guest() && Auth::user()->id == $house->user_id)
 
         <a href="#" class="btn btn-success pull-left m0  ">Edit</a>
@@ -89,7 +88,7 @@ command to make pagination works with Bootstrap 4--}}
 
                 $.ajax({
                     type: 'GET',
-                    url:'{{route('delete.house')}}',
+                    {{--url:'{{route('delete.house')}}',--}}
                     mehtod:"get",
                     data:dataObject,
                     success:function()
